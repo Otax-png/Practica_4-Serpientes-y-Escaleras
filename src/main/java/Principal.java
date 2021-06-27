@@ -1,5 +1,3 @@
-package Backend;
-
 import Frontend.VentanaPrincipal;
 
 public class Principal {

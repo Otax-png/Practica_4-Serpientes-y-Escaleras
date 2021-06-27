@@ -1,6 +1,6 @@
 package Backend.Jugador;
 
-public class Jugador {
+public abstract class Jugador {
 
     private int id;
     private String Nombre;
