@@ -39,7 +39,7 @@ public class VentanaPrincipal extends JFrame {
 
         gameText.setText("SERPIENTES Y ESCALERAS");
 
-        Inicio.setText("Iniciar Partida");
+        Inicio.setText("Comenzar");
 
         Inicio.addActionListener(new ActionListener() {
             @Override
@@ -50,15 +50,76 @@ public class VentanaPrincipal extends JFrame {
         });
     }
 
-
     public void MenuInicio(){
+        JButton Jugar = new JButton("Jugar");
+        JButton MostrarReportes = new JButton("Mostrar Reportes");
+        JButton IngresarJugadores = new JButton(" Ingresar Jugadores");
+        JButton Salir = new JButton("Salir");
+
+        JPanel northPane = new JPanel();
+        JPanel centerPane = new JPanel();
+        JPanel southPane = new JPanel();
+        JPanel eastPane = new JPanel();
+        JPanel westPane = new JPanel();
+
         setBounds(250,150,900,500);
         Principal.setLayout(new BorderLayout());
+        Principal.add(northPane,BorderLayout.NORTH);
+        Principal.add(centerPane,BorderLayout.CENTER);
+        Principal.add(southPane, BorderLayout.SOUTH);
+        Principal.add(eastPane, BorderLayout.EAST);
+        Principal.add(westPane, BorderLayout.WEST);
+        westPane.setLayout(new GridLayout(4,1));
 
-        JLabel welcomeText = new JLabel("Hola");
-        Principal.add(welcomeText,BorderLayout.NORTH);
+        northPane.add(new JLabel("Serpientes y Escaleras"));
+
+        westPane.add(Jugar);
+        westPane.add(MostrarReportes);
+        westPane.add(IngresarJugadores);
+        westPane.add(Salir);
+        /*
+        EVENTO BOTON SALIR
+         */
+        Salir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JFrame f = new JFrame();
+                JOptionPane.showMessageDialog(f,"              Adios");
+                System.exit(0);
+            }
+        });
+
+        /*
+        EVENTO BOTON JUGAR
+         */
+        Jugar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                PanelPrincipal.LimpiarPanel(Principal);
+                Principal.IniciarJuego();
+            }
+        });
+
+        /*
+        EVENTO BOTON MOSTAR REPORTES
+         */
+        MostrarReportes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                PanelPrincipal.LimpiarPanel(Principal);
+            }
+        });
+
+        /*
+        EVENTO BOTON INGRESAR JUGADOR
+         */
+        IngresarJugadores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                PanelPrincipal.LimpiarPanel(Principal);
+            }
+        });
+
     }
-
-
 
 }
