@@ -1,6 +1,7 @@
 package Frontend;
 
 import Backend.Juego.Casillas.Normal;
+import Backend.Juego.Tablero;
 import Backend.Jugador.Jugador;
 
 
@@ -8,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PanelPrincipal extends JPanel {
-
+    Tablero juego;
     Jugador[] listaUsuarios = new Jugador[12];
 
     JPanel centerPane = new JPanel();
@@ -32,6 +33,9 @@ public class PanelPrincipal extends JPanel {
     }
 
     public void IniciarJuego(){
+        int contador = 0;
+
+        juego = new Tablero(10,10);
         JLabel title = new JLabel("HOLA");
 
         setLayout(new BorderLayout());
@@ -43,6 +47,10 @@ public class PanelPrincipal extends JPanel {
 
         centerPane.setLayout(new GridLayout(10,10));
         northPane.add(title);
+
+        for (int i = juego.casillas.length - 1; i >= 0; i--) {
+            centerPane.add(juego.casillas[i]);
+        }
     }
 
     public void MostrarReportes(){

@@ -6,13 +6,15 @@ import javax.management.DescriptorAccess;
 import javax.swing.*;
 import java.awt.*;
 
-public class Botones extends JButton {
+public class GraficCasilla extends JButton {
     Casilla escaque;
     int x;
     int y;
 
-    public Botones(Casilla escaque){
+    public GraficCasilla(Casilla escaque, int x, int y){
         this.escaque = escaque;
+        this.x = x;
+        this.y = y;
         setBackground(escaque.color);
         setText(escaque.text);
     }

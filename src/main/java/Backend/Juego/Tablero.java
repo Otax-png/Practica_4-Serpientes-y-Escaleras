@@ -1,7 +1,9 @@
 package Backend.Juego;
 
+import Backend.Juego.Casillas.Final;
+import Backend.Juego.Casillas.Inicio;
 import Backend.Juego.Casillas.Normal;
-import Frontend.Botones;
+import Frontend.GraficCasilla;
 
 import java.awt.*;
 
@@ -9,7 +11,8 @@ public class Tablero {
 
     private int filas;
     private int columnas;
-    public Botones[] casillas;
+    public GraficCasilla[] casillas;
+
 
     private int pocisionXInicial;
     private int posicionYInicial;
@@ -23,9 +26,22 @@ public class Tablero {
     }
 
     public void CrearCasilla(){
-        for (int i = 0; i < this.filas * this.columnas; i++) {
-            casillas[i] = new Botones(new Normal(Color.RED));
+        int contador = 0;
+
+        casillas = new GraficCasilla[this.filas * this.columnas];
+
+        casillas[0] = new GraficCasilla(new Inicio(Color.WHITE),0,0);
+
+        for (int i = 1; i < this.filas * this.columnas - 1; i++) {
+            casillas[i] = new GraficCasilla(new Normal(Color.RED), contador, i);
+            contador++;
+            if(contador == this.columnas){
+                contador = 0;
+            }
         }
+
+        casillas[casillas.length - 1] = new GraficCasilla(new Final(Color.LIGHT_GRAY),this.columnas - 1, this.filas - 1);
+
     }
 
     /*
