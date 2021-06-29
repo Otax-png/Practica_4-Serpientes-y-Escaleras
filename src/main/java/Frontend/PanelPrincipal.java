@@ -1,7 +1,8 @@
 package Frontend;
 
+import Backend.Juego.Casillas.Normal;
 import Backend.Jugador.Jugador;
-import Backend.Jugador.Usuario;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,16 +41,28 @@ public class PanelPrincipal extends JPanel {
         add(eastPane, BorderLayout.EAST);
         add(westPane, BorderLayout.WEST);
 
-
+        centerPane.setLayout(new GridLayout(10,10));
         northPane.add(title);
     }
 
     public void MostrarReportes(){
+        JTable listaJugadores = new JTable();
 
     }
 
     public void IngresarJugador(){
-        Usuario jugador1 = new Usuario();
+        JFrame f = new JFrame();
+
+        int id = 0;
+        String nombre;
+        String apellido;
+
+        nombre = JOptionPane.showInputDialog("Ingresa Tu nombre");
+        apellido = JOptionPane.showInputDialog("Ingresa Tu Apellido");
+
+        JOptionPane.showMessageDialog(f,"Hola " + nombre  + " " + apellido );
+
+
     }
 
 }

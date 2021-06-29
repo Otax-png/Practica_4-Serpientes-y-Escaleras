@@ -4,9 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.nio.file.FileAlreadyExistsException;
 
 public class VentanaPrincipal extends JFrame {
     public PanelPrincipal Principal = new PanelPrincipal();
+    public PanelPrincipal Juego = new PanelPrincipal();
+    public PanelPrincipal Reporte = new PanelPrincipal();
+    public PanelPrincipal Registro = new PanelPrincipal();
+
+    public JButton regresar = new JButton("Regresar");
 
     public VentanaPrincipal(){
         setBounds(370,250,600,300);
@@ -14,7 +20,7 @@ public class VentanaPrincipal extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         add(Principal);
         Bienvenida();
-
+        regresar.setVisible(false);
     }
 
     public void Bienvenida(){
@@ -40,6 +46,8 @@ public class VentanaPrincipal extends JFrame {
         gameText.setText("SERPIENTES Y ESCALERAS");
 
         Inicio.setText("Comenzar");
+        Inicio.setBackground(Color.BLACK);
+        Inicio.setForeground(Color.WHITE);
 
         Inicio.addActionListener(new ActionListener() {
             @Override
@@ -55,6 +63,18 @@ public class VentanaPrincipal extends JFrame {
         JButton MostrarReportes = new JButton("Mostrar Reportes");
         JButton IngresarJugadores = new JButton(" Ingresar Jugadores");
         JButton Salir = new JButton("Salir");
+
+        Jugar.setBackground(Color.BLACK);
+        Jugar.setForeground(Color.WHITE);
+
+        MostrarReportes.setBackground(Color.BLACK);
+        MostrarReportes.setForeground(Color.WHITE);
+
+        IngresarJugadores.setBackground(Color.BLACK);
+        IngresarJugadores.setForeground(Color.WHITE);
+
+        Salir.setBackground(Color.BLACK);
+        Salir.setForeground(Color.WHITE);
 
         JPanel northPane = new JPanel();
         JPanel centerPane = new JPanel();
@@ -95,8 +115,9 @@ public class VentanaPrincipal extends JFrame {
         Jugar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                PanelPrincipal.LimpiarPanel(Principal);
-                Principal.IniciarJuego();
+                limpiarPanel();
+                agregarPanel(Juego);
+                Juego.IniciarJuego();
             }
         });
 
@@ -106,7 +127,12 @@ public class VentanaPrincipal extends JFrame {
         MostrarReportes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                PanelPrincipal.LimpiarPanel(Principal);
+                limpiarPanel();
+                agregarPanel(Reporte);
+                regresar.setVisible(true);
+                southPane.add(regresar);
+                Reporte.MostrarReportes();
+
             }
         });
 
@@ -116,10 +142,20 @@ public class VentanaPrincipal extends JFrame {
         IngresarJugadores.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                PanelPrincipal.LimpiarPanel(Principal);
+                Registro.IngresarJugador();
             }
         });
 
     }
 
+
+    public void limpiarPanel(){
+        getContentPane().removeAll();
+        SwingUtilities.updateComponentTreeUI(this);
+    }
+
+    public void agregarPanel(JPanel Panel){
+        getContentPane().add(Panel);
+        SwingUtilities.updateComponentTreeUI(this);
+    }
 }

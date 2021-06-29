@@ -1,2 +1,4 @@
-package Backend.LecturaDatos;public class CargarDatos {
+package Backend.LecturaDatos;
+
+public class CargarDatos {
 }

@@ -1,17 +1,36 @@
 package Backend.Juego;
 
+import Backend.Juego.Casillas.Normal;
+import Frontend.Botones;
+
+import java.awt.*;
+
 public class Tablero {
 
     private int filas;
     private int columnas;
+    public Botones[] casillas;
+
     private int pocisionXInicial;
     private int posicionYInicial;
     private int posicionXFinal;
     private int posicionYFinal;
 
+    public Tablero(int filas, int columnas) {
+        this.filas = filas;
+        this.columnas = columnas;
+        CrearCasilla();
+    }
+
+    public void CrearCasilla(){
+        for (int i = 0; i < this.filas * this.columnas; i++) {
+            casillas[i] = new Botones(new Normal(Color.RED));
+        }
+    }
+
     /*
-    GETTERS
-     */
+        GETTERS
+         */
     public int getFilas() {
         return filas;
     }
