@@ -1,6 +1,6 @@
 package Backend.Jugador;
 
-public abstract class Jugador {
+public class Jugador {
 
     private int id;
     private String Nombre;
@@ -18,9 +18,14 @@ public abstract class Jugador {
         this.partidasGanadas = partidasGanadas;
         this.partidasPerdidas = partidasPerdidas;
     }
+
+    public Jugador(String nombre) {
+        Nombre = nombre;
+    }
+
     /*
-    GETTERS
-     */
+        GETTERS
+         */
     public int getId() {
         return id;
     }

@@ -3,12 +3,15 @@ package Frontend;
 import Backend.Juego.Casillas.Normal;
 import Backend.Juego.Tablero;
 import Backend.Jugador.Jugador;
+import Backend.Utilities;
 
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class PanelPrincipal extends JPanel {
+public class PanelPrincipal extends JPanel implements Utilities {
     Tablero juego;
     Jugador[] listaUsuarios = new Jugador[12];
 
@@ -37,6 +40,8 @@ public class PanelPrincipal extends JPanel {
 
         juego = new Tablero(10,10);
         JLabel title = new JLabel("HOLA");
+        JButton tirarDado = new JButton();
+
 
         setLayout(new BorderLayout());
         add(centerPane, BorderLayout.CENTER);
@@ -45,12 +50,25 @@ public class PanelPrincipal extends JPanel {
         add(eastPane, BorderLayout.EAST);
         add(westPane, BorderLayout.WEST);
 
+
         centerPane.setLayout(new GridLayout(10,10));
         northPane.add(title);
 
         for (int i = juego.casillas.length - 1; i >= 0; i--) {
             centerPane.add(juego.casillas[i]);
         }
+        southPane.setLayout(new GridLayout(1,1));
+        tirarDado.setText("Tirar Dado");
+        southPane.add(tirarDado);
+
+        tirarDado.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                int random = generarRandom(6,1);
+                juego.moverJugador(random);
+                SwingUtilities.updateComponentTreeUI(centerPane);
+            }
+        });
     }
 
     public void MostrarReportes(){
