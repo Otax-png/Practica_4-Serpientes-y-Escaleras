@@ -15,7 +15,7 @@ public class Escalera extends Casilla{
     @Override
     public void Accion(GraficJugador jugador) {
 
-        int index = jugador.referencia.index + 10;
+        int index = jugador.referencia.index + 15;
         JOptionPane.showMessageDialog(null,"Has caido en una escalera, Tu Ficha se ha movido 10 pocisiones");
         jugador.setReferencia(Tablero.casillas[index]);
     }

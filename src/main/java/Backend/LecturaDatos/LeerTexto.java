@@ -1,4 +1,4 @@
 package Backend.LecturaDatos;
 
-public class LeerDatos {
+public class LeerText {
 }

@@ -1,4 +1,4 @@
 package Backend.LecturaDatos;
 
-public class GuardarDatos {
+public class LeerObjeto {
 }
