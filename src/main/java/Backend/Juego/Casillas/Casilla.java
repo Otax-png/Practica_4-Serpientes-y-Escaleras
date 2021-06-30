@@ -1,8 +1,10 @@
 package Backend.Juego.Casillas;
 
+import Frontend.GraficJugador;
+
 import java.awt.*;
 
-public class Casilla {
+public abstract class Casilla {
 
     public Color color;
     public String text;
@@ -11,4 +13,6 @@ public class Casilla {
     public Casilla(Color color) {
         this.color = color;
     }
+
+    public abstract void Accion(GraficJugador jugador);
 }

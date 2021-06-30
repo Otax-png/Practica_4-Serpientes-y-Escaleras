@@ -21,4 +21,6 @@ public class GraficJugador extends JButton {
         this.referencia = referencia;
         this.referencia.add(this);
     }
+
+
 }
