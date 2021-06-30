@@ -1,5 +1,6 @@
 package Backend.Juego;
 
+import Backend.Juego.Casillas.Escalera;
 import Backend.Juego.Casillas.Final;
 import Backend.Juego.Casillas.Inicio;
 import Backend.Juego.Casillas.Normal;
@@ -13,7 +14,7 @@ public class Tablero {
 
     private int filas;
     private int columnas;
-    public GraficCasilla[] casillas;
+    public static GraficCasilla[] casillas;
     public GraficJugador[] jugadores;
     public GraficJugador turnoActual;
 
@@ -52,6 +53,7 @@ public class Tablero {
                 contador = 0;
             }
         }
+        casillas[50] = new GraficCasilla(new Escalera(Color.MAGENTA),5,5,50);
 
         casillas[casillas.length - 1] = new GraficCasilla(new Final(Color.LIGHT_GRAY),this.columnas - 1, this.filas - 1, casillas.length - 1);
 
@@ -62,13 +64,14 @@ public class Tablero {
         if(turno + cantidadCasillas < casillas.length){
             GraficCasilla aux = casillas[turno + cantidadCasillas];
             turnoActual.setReferencia(aux);
-
-            if(turnoActual == jugadores[0]){
-                turnoActual = jugadores[1];
-            } else {
-                turnoActual = jugadores[0];
-            }
         }
+
+        if(turnoActual == jugadores[0]){
+            turnoActual = jugadores[1];
+        } else {
+            turnoActual = jugadores[0];
+        }
+
     }
 
     /*

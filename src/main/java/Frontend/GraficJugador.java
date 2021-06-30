@@ -18,8 +18,9 @@ public class GraficJugador extends JButton {
     }
 
     public void setReferencia(GraficCasilla referencia) {
+        referencia.add(this);
         this.referencia = referencia;
-        this.referencia.add(this);
+        this.referencia.escaque.Accion(this);
     }
 
 

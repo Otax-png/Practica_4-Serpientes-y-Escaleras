@@ -64,6 +64,8 @@ public class PanelPrincipal extends JPanel implements Utilities {
         tirarDado.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+
+                int aux = 5;
                 int random = generarRandom(6,1);
                 juego.moverJugador(random);
                 SwingUtilities.updateComponentTreeUI(centerPane);
