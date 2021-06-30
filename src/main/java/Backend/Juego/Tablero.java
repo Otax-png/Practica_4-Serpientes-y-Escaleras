@@ -1,9 +1,6 @@
 package Backend.Juego;
 
-import Backend.Juego.Casillas.Escalera;
-import Backend.Juego.Casillas.Final;
-import Backend.Juego.Casillas.Inicio;
-import Backend.Juego.Casillas.Normal;
+import Backend.Juego.Casillas.*;
 import Backend.Jugador.Jugador;
 import Frontend.GraficCasilla;
 import Frontend.GraficJugador;
@@ -53,7 +50,16 @@ public class Tablero {
                 contador = 0;
             }
         }
+        //Creando Serpientes
+        casillas[30] = new GraficCasilla(new Serpiente(Color.BLACK), 5,5,30);
+        casillas[95] = new GraficCasilla(new Serpiente(Color.BLACK),5,5,95);
+        casillas[65] = new GraficCasilla(new Serpiente(Color.BLACK),5,5,65);
+
+        //Creando Escaleras
         casillas[50] = new GraficCasilla(new Escalera(Color.MAGENTA),5,5,50);
+        casillas[10] = new GraficCasilla(new Escalera(Color.MAGENTA),5,5,10);
+        casillas[80] = new GraficCasilla(new Escalera(Color.MAGENTA),5,5,80);
+
 
         casillas[casillas.length - 1] = new GraficCasilla(new Final(Color.LIGHT_GRAY),this.columnas - 1, this.filas - 1, casillas.length - 1);
 
@@ -74,6 +80,9 @@ public class Tablero {
 
     }
 
+    public void Ganador(){
+
+    }
     /*
         GETTERS
          */

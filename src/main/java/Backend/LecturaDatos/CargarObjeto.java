@@ -1,4 +1,4 @@
 package Backend.LecturaDatos;
 
-public class CargarDatos {
+public class CargarObjeto {
 }

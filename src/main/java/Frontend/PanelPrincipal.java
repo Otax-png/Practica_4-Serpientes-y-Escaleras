@@ -39,7 +39,7 @@ public class PanelPrincipal extends JPanel implements Utilities {
         int contador = 0;
 
         juego = new Tablero(10,10);
-        JLabel title = new JLabel("HOLA");
+        JLabel title = new JLabel("SERPIENTES Y ESCALERAS");
         JButton tirarDado = new JButton();
 
 
@@ -50,10 +50,15 @@ public class PanelPrincipal extends JPanel implements Utilities {
         add(eastPane, BorderLayout.EAST);
         add(westPane, BorderLayout.WEST);
 
+        eastPane.setLayout(new BorderLayout());
+
 
         centerPane.setLayout(new GridLayout(10,10));
-        northPane.add(title);
+        JLabel infoText = new JLabel();
+        eastPane.add(infoText);
 
+
+        northPane.add(title);
         for (int i = juego.casillas.length - 1; i >= 0; i--) {
             centerPane.add(juego.casillas[i]);
         }
@@ -64,10 +69,13 @@ public class PanelPrincipal extends JPanel implements Utilities {
         tirarDado.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
                 int aux = 5;
                 int random = generarRandom(6,1);
+
+                infoText.setText( "Te has movido " + random + " Casillas");
                 juego.moverJugador(random);
+
+
                 SwingUtilities.updateComponentTreeUI(centerPane);
             }
         });
@@ -81,7 +89,6 @@ public class PanelPrincipal extends JPanel implements Utilities {
     public void IngresarJugador(){
         JFrame f = new JFrame();
 
-        int id = 0;
         String nombre;
         String apellido;
 
@@ -89,6 +96,7 @@ public class PanelPrincipal extends JPanel implements Utilities {
         apellido = JOptionPane.showInputDialog("Ingresa Tu Apellido");
 
         JOptionPane.showMessageDialog(f,"Hola " + nombre  + " " + apellido );
+
 
 
     }
